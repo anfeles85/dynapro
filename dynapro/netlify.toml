@@ -1,0 +1,29 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# Redirecciones para funciones backend serverless en Netlify
+[[redirects]]
+  from = "/api/auth/send-recovery-code"
+  to = "/.netlify/functions/send-recovery-code"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/verify-recovery-code"
+  to = "/.netlify/functions/verify-recovery-code"
+  status = 200
+
+[[redirects]]
+  from = "/api/auth/change-password"
+  to = "/.netlify/functions/change-password"
+  status = 200
+
+# Redirección SPA para que cualquier ruta recargada en Netlify cargue el index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

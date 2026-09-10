@@ -1,0 +1,4 @@
+/api/auth/send-recovery-code  /.netlify/functions/send-recovery-code  200
+/api/auth/verify-recovery-code  /.netlify/functions/verify-recovery-code  200
+/api/auth/change-password  /.netlify/functions/change-password  200
+/*  /index.html  200

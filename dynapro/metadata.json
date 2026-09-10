@@ -1,0 +1,6 @@
+{
+  "name": "DynaPro - Banco de Proyectos",
+  "description": "Sistema institucional de gestión documental y repositorio de proyectos de investigación del SENA CLEM.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
