@@ -4,15 +4,18 @@ import { createClient } from '@supabase/supabase-js';
 const SUPABASE_URL =
   process.env.SUPABASE_URL ||
   process.env.VITE_SUPABASE_URL ||
-  'https://jkorczrtrsasbsgnzqnd.supabase.co';
+  '';
 
 const SUPABASE_KEY =
   process.env.SUPABASE_SERVICE_ROLE_KEY ||
   process.env.SUPABASE_ANON_KEY ||
   process.env.VITE_SUPABASE_ANON_KEY ||
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imprb3JjenJ0cnNhc2JzZ256cW5kIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NzgzOTMzMiwiZXhwIjoyMTAzNDE1MzMyfQ.yaQJX4SQAl76T5J11y68LxleSC69LIL3Ctig_yOmQeQ';
+  '';
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = createClient(
+  SUPABASE_URL || 'https://placeholder.supabase.co',
+  SUPABASE_KEY || 'placeholder-key'
+);
 
 const headers = {
   'Access-Control-Allow-Origin': '*',
@@ -31,6 +34,14 @@ export const handler = async (event: any) => {
       statusCode: 405,
       headers,
       body: JSON.stringify({ error: 'Método no permitido. Utilice POST.' })
+    };
+  }
+
+  if (!SUPABASE_URL || !SUPABASE_KEY) {
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: 'Configuración del servidor incompleta (credenciales de Supabase no definidas).' })
     };
   }
 
