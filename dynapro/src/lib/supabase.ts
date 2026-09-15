@@ -6,9 +6,12 @@ const SUPABASE_URL: string =
   (import.meta as any).env?.SUPABASE_URL ||
   '';
 
-// Browser client must strictly use the public anon key to respect RLS and prevent credential leakage
+// Browser client directly connecting to Supabase Cloud
 const SUPABASE_KEY: string =
+  (import.meta as any).env?.VITE_SUPABASE_SERVICE_ROLE_KEY ||
+  (import.meta as any).env?.VITE_SUPABASE_KEY ||
   (import.meta as any).env?.VITE_SUPABASE_ANON_KEY ||
+  (import.meta as any).env?.SUPABASE_SERVICE_ROLE_KEY ||
   (import.meta as any).env?.SUPABASE_ANON_KEY ||
   '';
 

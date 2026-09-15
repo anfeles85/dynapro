@@ -8,11 +8,6 @@
 
 # Redirecciones para funciones backend serverless en Netlify
 [[redirects]]
-  from = "/api/auth/login"
-  to = "/.netlify/functions/login"
-  status = 200
-
-[[redirects]]
   from = "/api/auth/send-recovery-code"
   to = "/.netlify/functions/send-recovery-code"
   status = 200
